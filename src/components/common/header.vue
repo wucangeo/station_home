@@ -5,71 +5,14 @@
     </div>
     <div class="nav-bar">
       <ul>
-        <li>
-          <router-link :to="{name:'homeView'}">
-            首页</router-link>
-        </li>
-        <li @mouseover="mouseover('station')" @mouseout="mouseout('station')">
-          <router-link :to="{name:'homeView'}">
-            站点介绍</router-link>
-          <ul v-show="ulliVisible.station">
-            <li>
-              <router-link :to="{name:'homeView'}">台站简介</router-link>
-            </li>
-            <li>
-              <router-link :to="{name:'homeView'}">历史沿革</router-link>
-            </li>
-            <li>
-              <router-link :to="{name:'homeView'}">人员组成</router-link>
-            </li>
-            <li>
-              <router-link :to="{name:'homeView'}">规章制度</router-link>
+        <li v-for="item in routers" @mouseover="mouseover(item.name)" @mouseout="mouseout(item.name)">
+          <router-link :to="{name:item.name}">
+            {{item.title}}</router-link>
+          <ul v-show="ulliVisible[item.name]">
+            <li v-for="child in item.children">
+              <router-link :to="{name:child.name}">{{child.title}}</router-link>
             </li>
           </ul>
-        </li>
-        <li @mouseover="mouseover('news')" @mouseout="mouseout('news')">
-          <router-link :to="{name:'homeView'}">
-            新闻公告</router-link>
-          <ul v-show="ulliVisible.news">
-            <li>
-              <router-link :to="{name:'homeView'}">通知公告</router-link>
-            </li>
-            <li>
-              <router-link :to="{name:'homeView'}">综合新闻</router-link>
-            </li>
-            <li>
-              <router-link :to="{name:'homeView'}">科研动态</router-link>
-            </li>
-            <li>
-              <router-link :to="{name:'homeView'}">合作交流</router-link>
-            </li>
-            <li>
-              <router-link :to="{name:'homeView'}">科普活动</router-link>
-            </li>
-            <li>
-              <router-link :to="{name:'homeView'}">专题报道</router-link>
-            </li>
-          </ul>
-        </li>
-        <li @mouseover="mouseover('resource')" @mouseout="mouseout('resource')">
-          <router-link :to="{name:'homeView'}">
-            资源服务</router-link>
-        </li>
-        <li @mouseover="mouseover('research')" @mouseout="mouseout('research')">
-          <router-link :to="{name:'homeView'}">
-            科学研究</router-link>
-        </li>
-        <li @mouseover="mouseover('thematic')" @mouseout="mouseout('thematic')">
-          <router-link :to="{name:'homeView'}">
-            专题服务</router-link>
-        </li>
-        <li @mouseover="mouseover('popularize')" @mouseout="mouseout('popularize')">
-          <router-link :to="{name:'homeView'}">
-            科学普及</router-link>
-        </li>
-        <li @mouseover="mouseover('view')" @mouseout="mouseout('view')">
-          <router-link :to="{name:'homeView'}">
-            台站风光</router-link>
         </li>
       </ul>
     </div>
@@ -80,6 +23,7 @@ export default {
   data() {
     return {
       ulliVisible: {
+        home: false,
         station: false,
         news: false,
         resource: false,
@@ -87,8 +31,29 @@ export default {
         thematic: false,
         popularize: false,
         view: false
-      }
-    }
+      },
+      routers: [
+        {
+          name: "home",
+          title: "首页",
+          children: []
+        },
+        {
+          name: "station",
+          title: "站点介绍",
+          children: [
+            {
+              name: "stationIntroduce",
+              title: "台站简介"
+            },
+            {
+              name: "StationHistory",
+              title: "历史沿革"
+            }
+          ]
+        }
+      ]
+    };
   },
   methods: {
     mouseover(name) {
@@ -97,14 +62,12 @@ export default {
     mouseout(name) {
       var that = this;
       that.ulliVisible[name] = false;
-      setTimeout(function() {}, 600)
+      setTimeout(function() {}, 600);
     }
   }
 };
-
 </script>
 
 <style lang="less" scoped>
 @import "./header.less";
-
 </style>

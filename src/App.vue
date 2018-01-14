@@ -4,8 +4,11 @@
       <div class="common-center">
         <header-view/>
       </div>
-      <router-view/>
+      <div class="main-content">
+        <router-view/>
+      </div> 
       <div class="footer">
+        <footer-view/>
       </div>
     </div>
   </div>
@@ -13,9 +16,11 @@
 
 <script>
 import headerView from "@/components/common/header.vue";
+import footerView from "@/components/common/footer.vue";
 export default {
   name: "App",
   components: {
+    footerView,
     headerView
   }
 };
@@ -36,5 +41,8 @@ export default {
 .common-center {
   width: 1000px;
   margin: 0 auto;
+}
+.main-content {
+  min-height: 600px;
 }
 </style>
