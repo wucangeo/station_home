@@ -1,7 +1,7 @@
 <template>
   <div id="common-header">
     <div class="right-btn">
-      <Button type="warning">管理平台</Button>
+      <a :href="go2Manage" target="_blank"><Button type="warning">管理平台</Button></a>
     </div>
     <div class="nav-bar">
       <ul>
@@ -30,7 +30,7 @@ export default {
         research: false,
         thematic: false,
         popularize: false,
-        view: false
+        scene: false
       },
       routers: [
         {
@@ -51,9 +51,44 @@ export default {
               title: "历史沿革"
             }
           ]
+        },
+        {
+          name: "news",
+          title: "新闻公告",
+          children: []
+        },
+        {
+          name: "resource",
+          title: "资源服务",
+          children: []
+        },
+        {
+          name: "research",
+          title: "科学研究",
+          children: []
+        },
+        {
+          name: "thematic",
+          title: "专题服务",
+          children: []
+        },
+        {
+          name: "popularize",
+          title: "科学普及",
+          children: []
+        },
+        {
+          name: "scene",
+          title: "台站风光",
+          children: []
         }
       ]
     };
+  },
+  computed: {
+    go2Manage() {
+      return CONFIG.SERVER_URL + "/manage/";
+    }
   },
   methods: {
     mouseover(name) {

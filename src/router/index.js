@@ -2,8 +2,8 @@ import Vue from "vue";
 import Router from "vue-router";
 import MainRouter from "@/components/common/main-router";
 import Home from "@/components/home/home.vue";
-import StationIntroduce from "@/components/station/introduce.vue";
-import StationHistory from "@/components/station/history.vue";
+import stationIntroduce from "@/components/station/introduce.vue";
+import stationHistory from "@/components/station/history.vue";
 
 Vue.use(Router);
 
@@ -31,11 +31,11 @@ export default new Router({
       children: [{
         path: "introduce",
         name: "stationIntroduce",
-        component: StationIntroduce
+        component: stationIntroduce
       }, {
         path: "history",
         name: "stationHistory",
-        component: StationHistory
+        component: stationHistory
       }, ]
     }
   ]

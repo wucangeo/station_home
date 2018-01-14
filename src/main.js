@@ -23,6 +23,8 @@ Object.keys(filters.default).forEach(key => {
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {
+    App
+  },
   template: '<App/>'
 })
