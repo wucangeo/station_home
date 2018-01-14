@@ -1,0 +1,51 @@
+#common-header {
+  width: 1000px;
+  height: 160px;
+  // background: #cccccc;
+  .right-btn {
+    float: right;
+    margin-top: 40px;
+  }
+  .nav-bar {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    float: left;
+    margin-top: 48px;
+    height: 40px;
+    background: #005a98;
+    font-weight: bold;
+    font-size: 15px;
+    font-family: "微软雅黑";
+    line-height: 40px;
+    ul {
+      li {
+        display: inline-block;
+        width: 100px;
+        a {
+          padding: 7px 16px;
+          color: #bed5ec;
+          line-height: 40px;
+        }
+        background-position: right 10px;
+        background: url(../../assets/nav_lain.png) no-repeat;
+        a:hover {
+          background: #ff7d08;
+          color: #fff;
+        }
+        ul{
+          position: absolute;
+          margin-top: 0px;
+          width: 100px;
+          padding: 0;
+          li{
+            background-color: #005a98;
+            a:hover {
+              background: #ff7d08;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}
