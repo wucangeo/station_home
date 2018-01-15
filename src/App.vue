@@ -22,7 +22,8 @@ export default {
   components: {
     footerView,
     headerView
-  }
+  },
+  mounted() {}
 };
 </script>
 
