@@ -6,10 +6,13 @@
     <div class="page-main-content">
       <Card>
         <p slot="title">
-          历史沿革
+          规章制度
         </p>
-        <Row class="margin-top-10 searchable-table-con1">
-        <Table :columns="tableColumns" :data="tableData"></Table>
+        <Row>
+            <Table :columns="tableColumns" :data="tableData.rows"></Table>
+        </Row>
+        <Row class="margin-top-10">
+         <Page :total="tableData.count" :page-size="query.limit" @on-change="page_change" simple></Page>
         </Row>
       </Card>
     </div>
@@ -23,13 +26,14 @@ export default {
     return {
       navtitle: "站点介绍",
       delayTimer: null, //用于搜索延迟
+      page_num: 1,
       query: {
         keys: {
           type: 3, //类型为3，规章制度
           title: null
         },
         offset: 0,
-        limit: 10,
+        limit: 15,
         order: 0,
         order_by: "data_id"
       },
@@ -75,7 +79,7 @@ export default {
           }
         }
       ],
-      tableData: []
+      tableData: {}
     };
   },
   components: {
@@ -84,6 +88,9 @@ export default {
   computed: {
     routers() {
       return this.menus.station;
+    },
+    type() {
+      return this.query.keys.type;
     }
   },
   watch: {
@@ -94,6 +101,18 @@ export default {
       this.delayTimer = setTimeout(() => {
         this.list();
       }, 500);
+    },
+    $route(to, from) {
+      let query = this.$route.query;
+      let params = this.$route.params;
+      if (query && query.page_num) {
+        this.page_num = query.page_num;
+        this.query.offset = (this.page_num - 1) * this.query.limit;
+      }
+      if (params && params.type) {
+        this.query.keys.type = params.type;
+      }
+      this.list();
     }
   },
   methods: {
@@ -107,46 +126,14 @@ export default {
         });
         return;
       }
-      this.tableData = result.data.rows;
+      this.tableData = result.data;
     },
-    async update_enable(status, data_id) {
-      let response = await this.apis.station.update(
-        { enable: status },
-        data_id
-      );
-      let result = response.data;
-      if (result.code === 1) {
-        this.$Message.success({
-          content: result.msg,
-          duration: 1.5
-        });
-      } else {
-        this.$Message.error({
-          content: result.msg,
-          duration: 1.5
-        });
-      }
-      this.list();
-    },
-    async remove(data_id) {
-      let response = await this.apis.station.delete([data_id]);
-      let result = response.data;
-      if (result.code === 1) {
-        this.$Message.success({
-          content: result.msg,
-          duration: 1.5
-        });
-      } else {
-        this.$Message.error({
-          content: result.msg,
-          duration: 1.5
-        });
-      }
-      this.list();
-    },
-    add_news() {
+    page_change(page_num) {
+      this.page_num = page_num;
       this.$router.push({
-        name: "stationRegulationAdd"
+        name: "stationRegulation",
+        params: { type: this.type },
+        query: { page_num: page_num }
       });
     }
   },
