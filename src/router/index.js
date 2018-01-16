@@ -6,6 +6,8 @@ import stationIntroduce from "@/components/station/introduce.vue";
 import stationHistory from "@/components/station/history.vue";
 import stationRegulationList from "@/components/station/regulation-list.vue";
 import stationRegulationInfo from "@/components/station/regulation-info.vue";
+import newsList from "@/components/news/news-list.vue";
+import newsInfo from "@/components/news/news-info.vue";
 
 Vue.use(Router);
 
@@ -46,7 +48,27 @@ export default new Router({
         path: "regulation/:data_id",
         name: "stationRegulationInfo",
         component: stationRegulationInfo
-      }, ]
+      }]
+    },
+    {
+      path: "/news",
+      name: "news",
+      component: MainRouter,
+      redirect: {
+        name: 'newsList',
+        params: {
+          type: 1
+        }
+      },
+      children: [{
+        path: "type/:type",
+        name: "newsList",
+        component: newsList
+      }, {
+        path: "type/:type/:data_id",
+        name: "newsInfo",
+        component: newsInfo
+      }]
     }
   ]
 });
