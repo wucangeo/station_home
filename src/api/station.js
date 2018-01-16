@@ -20,7 +20,7 @@ const station = {
     return axios({
       url: `/station/${data_id}`,
       method: 'get',
-      data: {
+      params: {
         access_key
       }
     })

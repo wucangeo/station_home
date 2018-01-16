@@ -8,6 +8,11 @@ let menu = {
       name: "stationHistory",
       title: "历史沿革",
       children: []
+    },
+    {
+      name: "stationRegulation",
+      title: "规章制度",
+      children: []
     }
   ],
   news: []

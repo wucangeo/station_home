@@ -4,6 +4,8 @@ import MainRouter from "@/components/common/main-router";
 import Home from "@/components/home/home.vue";
 import stationIntroduce from "@/components/station/introduce.vue";
 import stationHistory from "@/components/station/history.vue";
+import stationRegulationList from "@/components/station/regulation-list.vue";
+import stationRegulationInfo from "@/components/station/regulation-info.vue";
 
 Vue.use(Router);
 
@@ -36,6 +38,14 @@ export default new Router({
         path: "history",
         name: "stationHistory",
         component: stationHistory
+      }, {
+        path: "regulation",
+        name: "stationRegulation",
+        component: stationRegulationList
+      }, {
+        path: "regulation/:data_id",
+        name: "stationRegulationInfo",
+        component: stationRegulationInfo
       }, ]
     }
   ]
