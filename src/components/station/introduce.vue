@@ -59,7 +59,7 @@ export default {
   methods: {
     async get() {
       let query = {
-        type: 1,
+        keys: { type: 1 },
         limit: 1
       };
       let response = await this.apis.station.list(query);
