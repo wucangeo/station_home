@@ -1,7 +1,7 @@
 <template>
   <div id="station-introduce">
     <div class="left-nav-bar">
-      <navbar :routers="routers" :title="title"/>
+      <navbar :routers="routers" :title="title" />
     </div>
     <div class="page-main-content">
       <Card>
@@ -9,11 +9,15 @@
           台站简介
         </p>
         <p class="news-title">{{news.title}}</p>
-        <p class="news-author-date">
-          <span class="news-author">{{news.created_user}}</span>
-          <span class="news-date">{{news.updated_at|getENDate}}</span>
+        <p class="news-author-created">
+          <span class="news-author">{{created_user}}</span>
+          <span class="news-date">{{news.created_at|getENDate}}</span>
         </p>
         <div class="html-content" v-html="news.content"></div>
+         <p class="news-author-updated">
+          <span class="news-author">最近更新：{{updated_user}}</span>
+          <span class="news-date">{{news.updated_at|getENDate}}</span>
+        </p>
       </Card>
     </div>
   </div>
@@ -36,6 +40,20 @@ export default {
   computed: {
     routers() {
       return this.menus.station;
+    },
+    updated_user() {
+      if (this.news.user_updated) {
+        return this.news.user_updated.name;
+      } else {
+        return "管理员";
+      }
+    },
+    created_user() {
+      if (this.news.user_created) {
+        return this.news.user_created.name;
+      } else {
+        return "管理员";
+      }
     }
   },
   methods: {
@@ -68,4 +86,3 @@ export default {
   }
 };
 </script>
-
