@@ -11,11 +11,9 @@ import * as filters from './libs/filter'
 import Cookies from "js-cookie";
 import encrypt from "./libs/encrypt";
 
-let access_key = Cookies.get("access_key");
-if (!access_key) {
-  access_key = encrypt.encrypt("1", "soil");
-  Cookies.set("access_key", access_key);
-}
+let num = Math.random();
+let access_key = encrypt.encrypt((-num).toString(), "soil");
+Cookies.set("access_key", access_key);
 
 Vue.config.productionTip = false
 Vue.use(iView)
