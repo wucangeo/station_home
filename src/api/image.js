@@ -9,73 +9,23 @@ let salt = 'bnu'
 
 const image = {
   list: async function(query) {
-    let access_token = Cookies.get('access_token')
+    let access_key = Cookies.get('access_key')
+    query.access_key = access_key;
     return axios({
       url: '/image',
       method: 'get',
-      headers: {
-        'x-access-token': access_token
-      },
       params: query
     })
   },
   get: async function(data_id) {
-    let access_token = Cookies.get('access_token')
+    let access_key = Cookies.get('access_key')
     return axios({
       url: `/image/${data_id}`,
       method: 'get',
-      headers: {
-        'x-access-token': access_token
+      params: {
+        access_key
       }
     })
   },
-  create: function(item) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: `/image`,
-      method: 'post',
-      headers: {
-        'x-access-token': access_token
-      },
-      data: item
-    })
-  },
-  update: function(updates, data_id) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: `/image/${data_id}`,
-      method: 'patch',
-      headers: {
-        'x-access-token': access_token
-      },
-      data: updates
-    })
-  },
-  delete: function(ids) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: '/image',
-      headers: {
-        'x-access-token': access_token
-      },
-      method: 'delete',
-      data: {
-        ids: ids
-      }
-    })
-  },
-  upload: function(item) {
-    debugger
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: '/image/upload',
-      headers: {
-        'x-access-token': access_token,
-        'Content-Type': 'multipart/form-data'
-      },
-      method: 'post',
-      data: item
-    })
-  }
 }
 export default image

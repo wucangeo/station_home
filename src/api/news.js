@@ -9,60 +9,23 @@ let salt = 'bnu'
 
 const news = {
   list: async function(query) {
-    let access_token = Cookies.get('access_token')
+    let access_key = Cookies.get('access_key')
+    query.access_key = access_key;
     return axios({
       url: '/news',
       method: 'get',
-      headers: {
-        'x-access-token': access_token
-      },
       params: query
     })
   },
   get: async function(data_id) {
-    let access_token = Cookies.get('access_token')
+    let access_key = Cookies.get('access_key')
     return axios({
       url: `/news/${data_id}`,
       method: 'get',
-      headers: {
-        'x-access-token': access_token
+      params: {
+        access_key
       }
     })
   },
-  create: function(item) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: `/news`,
-      method: 'post',
-      headers: {
-        'x-access-token': access_token
-      },
-      data: item
-    })
-  },
-  update: function(updates, data_id) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: `/news/${data_id}`,
-      method: 'patch',
-      headers: {
-        'x-access-token': access_token
-      },
-      data: updates
-    })
-  },
-  delete: function(ids) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: '/news',
-      headers: {
-        'x-access-token': access_token
-      },
-      method: 'delete',
-      data: {
-        ids: ids
-      }
-    })
-  }
 }
 export default news

@@ -7,58 +7,21 @@ axios.defaults.headers.patch['Content-Type'] = 'application/json'
 
 const monography = {
   list: async function(query) {
-    let access_token = Cookies.get('access_token')
+    let access_key = Cookies.get('access_key')
+    query.access_key = access_key;
     return axios({
       url: '/monography',
       method: 'get',
-      headers: {
-        'x-access-token': access_token
-      },
       params: query
     })
   },
   get: async function(data_id) {
-    let access_token = Cookies.get('access_token')
+    let access_key = Cookies.get('access_key')
     return axios({
       url: `/monography/${data_id}`,
       method: 'get',
-      headers: {
-        'x-access-token': access_token
-      }
-    })
-  },
-  create: function(item) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: `/monography`,
-      method: 'post',
-      headers: {
-        'x-access-token': access_token
-      },
-      data: item
-    })
-  },
-  update: function(updates, data_id) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: `/monography/${data_id}`,
-      method: 'patch',
-      headers: {
-        'x-access-token': access_token
-      },
-      data: updates
-    })
-  },
-  delete: function(ids) {
-    let access_token = Cookies.get('access_token')
-    return axios({
-      url: '/monography',
-      headers: {
-        'x-access-token': access_token
-      },
-      method: 'delete',
-      data: {
-        ids: ids
+      params: {
+        access_key
       }
     })
   },
