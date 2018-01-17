@@ -23,7 +23,16 @@ export default {
   data() {
     return {
       navtitle: "站点介绍",
-      cardTitleList: ["通知公告", "综合新闻", "科研动态", "服务动态", "合作交流", "科普活动", "专题报道"],
+      cardTitleList: [
+        "新闻公告",
+        "通知公告",
+        "综合新闻",
+        "科研动态",
+        "服务动态",
+        "合作交流",
+        "科普活动",
+        "专题报道"
+      ],
       delayTimer: null, //用于搜索延迟
       page_num: 1,
       query: {
@@ -140,7 +149,7 @@ export default {
     }
   },
   mounted() {
-    this.list();
+    // this.list();
   }
 };
 </script>
