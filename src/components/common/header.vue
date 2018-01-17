@@ -122,7 +122,16 @@ export default {
         {
           name: "research",
           title: "科学研究",
-          children: []
+          children: [
+            {
+              name: "achv",
+              title: "科研成果"
+            },
+            {
+              name: "project",
+              title: "科研项目"
+            }
+          ]
         },
         {
           name: "thematic",

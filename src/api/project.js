@@ -8,12 +8,10 @@ axios.defaults.headers.patch['Content-Type'] = 'application/json'
 const project = {
   list: async function(query) {
     let access_key = Cookies.get('access_key')
+    query.access_key = access_key;
     return axios({
       url: '/project',
       method: 'get',
-      headers: {
-        'x-access-token': access_key
-      },
       params: query
     })
   },
@@ -22,8 +20,8 @@ const project = {
     return axios({
       url: `/project/${data_id}`,
       method: 'get',
-      headers: {
-        'x-access-token': access_key
+      params: {
+        access_key
       }
     })
   },

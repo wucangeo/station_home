@@ -71,7 +71,86 @@ let menu = {
       },
       children: []
     },
-  ]
+  ],
+  research: [{
+      name: "achv",
+      title: "科研成果",
+      children: [{
+          name: "researchAchvPaper",
+          title: "科研论文",
+          children: []
+        },
+        {
+          name: "researchAchvMonography",
+          title: "专著",
+          children: []
+        },
+        {
+          name: "researchAchvPatent",
+          title: "专利",
+          children: []
+        },
+        {
+          name: "researchAchvAwards",
+          title: "奖项",
+          children: []
+        },
+      ]
+    },
+    {
+      name: "project",
+      title: "科研项目",
+      children: [{
+          name: "projectList",
+          params: {
+            type: 1
+          },
+          title: "科技部项目",
+          children: []
+        },
+        {
+          name: "projectList",
+          params: {
+            type: 2
+          },
+          title: "基金委项目",
+          children: []
+        },
+        {
+          name: "projectList",
+          params: {
+            type: 3
+          },
+          title: "中科院项目",
+          children: []
+        },
+        {
+          name: "projectList",
+          params: {
+            type: 4
+          },
+          title: "其他部委项目",
+          children: []
+        },
+        {
+          name: "projectList",
+          params: {
+            type: 5
+          },
+          title: "地方项目",
+          children: []
+        },
+        {
+          name: "projectList",
+          params: {
+            type: 6
+          },
+          title: "其他项目",
+          children: []
+        },
+      ]
+    },
+  ],
 }
 
 export default menu

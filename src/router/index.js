@@ -8,6 +8,8 @@ import stationRegulationList from "@/components/station/regulation-list.vue";
 import stationRegulationInfo from "@/components/station/regulation-info.vue";
 import newsList from "@/components/news/news-list.vue";
 import newsInfo from "@/components/news/news-info.vue";
+import projectList from "@/components/project/project-list.vue";
+import projectInfo from "@/components/project/project-info.vue";
 
 Vue.use(Router);
 
@@ -68,6 +70,50 @@ export default new Router({
         path: "type/:type/:data_id",
         name: "newsInfo",
         component: newsInfo
+      }]
+    },
+    {
+      path: "/research",
+      name: "research",
+      component: MainRouter,
+      redirect: {
+        name: 'achv'
+      },
+      children: [{
+        path: "achv",
+        name: "achv",
+        component: MainRouter,
+        redirect: {
+          name: 'achvPaperList'
+        },
+        children: [{
+          path: "paper",
+          name: "achvPaperList",
+          component: newsList
+        }, {
+          path: "paper/:data_id",
+          name: "achvPaperInfo",
+          component: newsInfo
+        }]
+      }, {
+        path: "project",
+        name: "project",
+        component: MainRouter,
+        redirect: {
+          name: 'projectList',
+          params: {
+            type: 1
+          }
+        },
+        children: [{
+          path: "type/:type",
+          name: "projectList",
+          component: projectList
+        }, {
+          path: "type/:type/:data_id",
+          name: "projectInfo",
+          component: projectInfo
+        }, ]
       }]
     }
   ]
