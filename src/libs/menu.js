@@ -76,22 +76,22 @@ let menu = {
       name: "achv",
       title: "科研成果",
       children: [{
-          name: "researchAchvPaper",
+          name: "paperAchvList",
           title: "科研论文",
           children: []
         },
         {
-          name: "researchAchvMonography",
+          name: "monographyAchvList",
           title: "专著",
           children: []
         },
         {
-          name: "researchAchvPatent",
+          name: "patentAchvList",
           title: "专利",
           children: []
         },
         {
-          name: "researchAchvAwards",
+          name: "awardsAchvList",
           title: "奖项",
           children: []
         },

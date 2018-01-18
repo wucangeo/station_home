@@ -11,10 +11,10 @@ const apis = {
   image,
   news,
   station,
+  project,
   achv_monography,
   achv_awards,
   achv_patent,
-  project,
   achv_paper
 }
 

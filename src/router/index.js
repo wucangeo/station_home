@@ -10,6 +10,14 @@ import newsList from "@/components/news/news-list.vue";
 import newsInfo from "@/components/news/news-info.vue";
 import projectList from "@/components/project/project-list.vue";
 import projectInfo from "@/components/project/project-info.vue";
+import paperAchvList from "@/components/achv/paper-list.vue";
+import paperAchvInfo from "@/components/achv/paper-info.vue";
+import monographyAchvList from "@/components/achv/monography-list.vue";
+import monographyAchvInfo from "@/components/achv/monography-info.vue";
+import patentAchvList from "@/components/achv/patent-list.vue";
+import patentAchvInfo from "@/components/achv/patent-info.vue";
+import awardsAchvList from "@/components/achv/awards-list.vue";
+import awardsAchvInfo from "@/components/achv/awards-info.vue";
 
 Vue.use(Router);
 
@@ -84,17 +92,45 @@ export default new Router({
         name: "achv",
         component: MainRouter,
         redirect: {
-          name: 'achvPaperList'
+          name: 'paperAchvList'
         },
         children: [{
-          path: "paper",
-          name: "achvPaperList",
-          component: newsList
-        }, {
-          path: "paper/:data_id",
-          name: "achvPaperInfo",
-          component: newsInfo
-        }]
+            path: "paper",
+            name: "paperAchvList",
+            component: paperAchvList
+          }, {
+            path: "paper/:data_id",
+            name: "paperAchvInfo",
+            component: paperAchvInfo
+          },
+          {
+            path: "monography",
+            name: "monographyAchvList",
+            component: monographyAchvList
+          }, {
+            path: "monography/:data_id",
+            name: "monographyAchvInfo",
+            component: monographyAchvInfo
+          },
+          {
+            path: "patent",
+            name: "patentAchvList",
+            component: patentAchvList
+          }, {
+            path: "patent/:data_id",
+            name: "patentAchvInfo",
+            component: patentAchvInfo
+          },
+          {
+            path: "awards",
+            name: "awardsAchvList",
+            component: awardsAchvList
+          }, {
+            path: "awards/:data_id",
+            name: "awardsAchvInfo",
+            component: awardsAchvInfo
+          },
+        ]
       }, {
         path: "project",
         name: "project",
