@@ -153,7 +153,7 @@ export default {
   },
   computed: {
     go2Manage() {
-      return CONFIG.SERVER_URL + "/manage/";
+      return CONFIG.MANAGE_URL;
     }
   },
   methods: {
