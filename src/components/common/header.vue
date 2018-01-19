@@ -158,7 +158,18 @@ export default {
         {
           name: "popularize",
           title: "科学普及",
-          children: []
+          children: [
+            {
+              name: "knowledgePopularizeList",
+              title: "科普知识",
+              children: []
+            },
+            {
+              name: "imagePopularizeList",
+              title: "生态图片",
+              children: []
+            }
+          ]
         },
         {
           name: "scene",

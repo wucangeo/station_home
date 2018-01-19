@@ -20,6 +20,10 @@ import awardsAchvList from "@/components/achv/awards-list.vue";
 import awardsAchvInfo from "@/components/achv/awards-info.vue";
 import thematicList from "@/components/thematic/thematic-list.vue";
 import thematicInfo from "@/components/thematic/thematic-info.vue";
+import knowledgePopularizeList from "@/components/popularize/knowledge-list.vue";
+import knowledgePopularizeInfo from "@/components/popularize/knowledge-info.vue";
+import imagePopularizeList from "@/components/popularize/image-list.vue";
+import imagePopularizeInfo from "@/components/popularize/image-info.vue";
 
 Vue.use(Router);
 
@@ -172,6 +176,31 @@ export default new Router({
         path: "type/:type/:data_id",
         name: "thematicInfo",
         component: thematicInfo
+      }]
+    },
+    {
+      path: "/popularize",
+      name: "popularize",
+      component: MainRouter,
+      redirect: {
+        name: 'knowledgePopularizeList',
+      },
+      children: [{
+        path: "knowledge",
+        name: "knowledgePopularizeList",
+        component: knowledgePopularizeList
+      }, {
+        path: "knowledge/:data_id",
+        name: "knowledgePopularizeInfo",
+        component: knowledgePopularizeInfo
+      }, {
+        path: "image",
+        name: "imagePopularizeList",
+        component: imagePopularizeList
+      }, {
+        path: "image/:data_id",
+        name: "imagePopularizeInfo",
+        component: imagePopularizeInfo
       }]
     },
   ]

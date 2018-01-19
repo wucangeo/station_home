@@ -168,6 +168,17 @@ let menu = {
       children: []
     },
   ],
+  popularize: [{
+      name: "knowledgePopularizeList",
+      title: "科普知识",
+      children: []
+    },
+    {
+      name: "imagePopularizeList",
+      title: "生态图片",
+      children: []
+    },
+  ],
 }
 
 export default menu
