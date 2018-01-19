@@ -24,6 +24,8 @@ import knowledgePopularizeList from "@/components/popularize/knowledge-list.vue"
 import knowledgePopularizeInfo from "@/components/popularize/knowledge-info.vue";
 import imagePopularizeList from "@/components/popularize/image-list.vue";
 import imagePopularizeInfo from "@/components/popularize/image-info.vue";
+import imageSceneList from "@/components/Scene/image-list.vue";
+import imageSceneInfo from "@/components/Scene/image-info.vue";
 
 Vue.use(Router);
 
@@ -201,6 +203,23 @@ export default new Router({
         path: "image/:data_id",
         name: "imagePopularizeInfo",
         component: imagePopularizeInfo
+      }]
+    },
+    {
+      path: "/scene",
+      name: "scene",
+      component: MainRouter,
+      redirect: {
+        name: 'imageSceneList',
+      },
+      children: [{
+        path: "image",
+        name: "imageSceneList",
+        component: imageSceneList
+      }, {
+        path: "image/:data_id",
+        name: "imageSceneInfo",
+        component: imageSceneInfo
       }]
     },
   ]

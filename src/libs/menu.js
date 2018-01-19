@@ -179,6 +179,11 @@ let menu = {
       children: []
     },
   ],
+  scene: [{
+    name: "imageSceneList",
+    title: "台站风光",
+    children: []
+  }],
 }
 
 export default menu

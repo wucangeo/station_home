@@ -10,7 +10,7 @@
             <Card :padding="10">
               <p slot="title" v-if="cur_edit!=item.data_id">{{item.name}}</p>
               <p class="image-container">
-                <router-link :to="{ name: 'imagePopularizeInfo', params: { data_id:item.data_id }}"><img :src="item.path | getAbsolutePath"></router-link>
+                <router-link :to="{ name: 'imageSceneInfo', params: { data_id:item.data_id }}"><img :src="item.path | getAbsolutePath"></router-link>
               </p>
               <p class="image-item-footer">{{item.updated_at|getENDatetime}} </p>
             </Card>
@@ -26,11 +26,11 @@ export default {
   name: "popularize-image",
   data() {
     return {
-      navtitle: "科学普及",
+      navtitle: "台站风光",
       query: {
         keys: {
           name: null,
-          type: 1
+          type: 2
         },
         offset: 0,
         limit: -1,
@@ -49,7 +49,7 @@ export default {
   },
   computed: {
     routers() {
-      return this.menus.popularize;
+      return this.menus.scene;
     }
   },
   watch: {},
