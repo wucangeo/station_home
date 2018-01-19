@@ -120,6 +120,7 @@ export default {
       return;
     }
     this.data_id = parseInt(params.data_id);
+    this.formData.type = parseInt(params.type);
     this.get(this.data_id);
   },
   methods: {

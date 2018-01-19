@@ -6,6 +6,11 @@
     <div class="page-main-content">
       <Card>
         <p slot="title">{{cardTitle}}</p>
+        <p slot="extra">
+          <router-link :to="{name:'thematicList',type:'type'}">
+            <Button type="text" icon="ios-search">返回</Button>
+          </router-link>
+        </p>
         <p class="news-title">{{news.title}}</p>
         <p class="news-author-created">
           <span class="news-author">{{created_user}}</span>
@@ -25,22 +30,21 @@ import navbar from "@/components/common/navbar.vue";
 export default {
   data() {
     return {
-      navtitle: "新闻公告",
+      navtitle: "专题服务",
       cardTitleList: [
-        "通知公告",
-        "综合新闻",
-        "科研动态",
-        "服务动态",
-        "合作交流",
-        "科普活动",
-        "专题报道"
+        "专题服务",
+        "专题服务",
+        "专题服务",
+        "专题服务",
+        "生产与实践",
+        "服务科学研究"
       ],
       news: {
         title: "",
         content: ""
       },
       data_id: 1,
-      type: 1
+      type: 4
     };
   },
   components: {
@@ -48,7 +52,7 @@ export default {
   },
   computed: {
     routers() {
-      return this.menus.news;
+      return this.menus.thematic;
     },
     updated_user() {
       if (this.news.user_updated) {
@@ -70,7 +74,7 @@ export default {
   },
   methods: {
     async get(data_id) {
-      let response = await this.apis.news.get(data_id);
+      let response = await this.apis.station.get(data_id);
       let result = response.data;
       if (result.code === 0) {
         this.$Message.error({
@@ -93,11 +97,11 @@ export default {
     let params = this.$route.params;
     if (!params || !params.data_id || !params.type) {
       this.$Message.error({
-        content: "参数错误，即将跳转至新闻公告列表。",
+        content: "参数错误，即将跳转至专题服务列表。",
         duration: 1.5
       });
       setTimeout(() => {
-        this.$router.push({ name: "stationRegulation", params: { type: 1 } });
+        this.$router.push({ name: "thematicInfo", params: { type: 4 } });
       }, 1500);
       return;
     }

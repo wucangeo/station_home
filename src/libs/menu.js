@@ -151,6 +151,23 @@ let menu = {
       ]
     },
   ],
+  thematic: [{
+      name: "thematicList",
+      title: "生产与实践",
+      params: {
+        type: 4
+      },
+      children: []
+    },
+    {
+      name: "thematicList",
+      title: "服务科学研究",
+      params: {
+        type: 5
+      },
+      children: []
+    },
+  ],
 }
 
 export default menu

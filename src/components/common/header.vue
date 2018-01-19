@@ -136,7 +136,24 @@ export default {
         {
           name: "thematic",
           title: "专题服务",
-          children: []
+          children: [
+            {
+              name: "thematicList",
+              title: "生产与实践",
+              params: {
+                type: 4
+              },
+              children: []
+            },
+            {
+              name: "thematicList",
+              title: "服务科学研究",
+              params: {
+                type: 5
+              },
+              children: []
+            }
+          ]
         },
         {
           name: "popularize",

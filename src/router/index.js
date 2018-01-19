@@ -18,6 +18,8 @@ import patentAchvList from "@/components/achv/patent-list.vue";
 import patentAchvInfo from "@/components/achv/patent-info.vue";
 import awardsAchvList from "@/components/achv/awards-list.vue";
 import awardsAchvInfo from "@/components/achv/awards-info.vue";
+import thematicList from "@/components/thematic/thematic-list.vue";
+import thematicInfo from "@/components/thematic/thematic-info.vue";
 
 Vue.use(Router);
 
@@ -151,6 +153,26 @@ export default new Router({
           component: projectInfo
         }, ]
       }]
-    }
+    },
+    {
+      path: "/thematic",
+      name: "thematic",
+      component: MainRouter,
+      redirect: {
+        name: 'thematicList',
+        params: {
+          type: 4
+        }
+      },
+      children: [{
+        path: "type/:type",
+        name: "thematicList",
+        component: thematicList
+      }, {
+        path: "type/:type/:data_id",
+        name: "thematicInfo",
+        component: thematicInfo
+      }]
+    },
   ]
 });
