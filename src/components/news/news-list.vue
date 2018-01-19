@@ -37,7 +37,7 @@ export default {
       page_num: 1,
       query: {
         keys: {
-          type: 3, //类型为3，规章制度
+          type: 1, //类型为3，规章制度
           title: null
         },
         offset: 0,
@@ -114,6 +114,11 @@ export default {
       }, 500);
     },
     $route(to, from) {
+      this.init();
+    }
+  },
+  methods: {
+    init() {
       let query = this.$route.query;
       let params = this.$route.params;
       if (query && query.page_num) {
@@ -124,9 +129,7 @@ export default {
         this.query.keys.type = params.type;
       }
       this.list();
-    }
-  },
-  methods: {
+    },
     async list() {
       let response = await this.apis.news.list(this.query);
       let result = response.data;
@@ -149,7 +152,7 @@ export default {
     }
   },
   mounted() {
-    // this.list();
+    this.init();
   }
 };
 </script>
