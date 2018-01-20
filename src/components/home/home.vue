@@ -39,9 +39,9 @@
             </ul>
           </div>
           <ul class="home-news-item" v-show="achvTypeOver===1">
-            <li v-for="item in achvPaper">·
+            <li v-for="item in achvPaper">
               <router-link :to="{name:'paperAchvInfo',params:{data_id:item.data_id}}" >
-                <span class="home-news-title" style="width:245px"> {{item.title}}</span>
+                <span class="home-news-title" style="width:245px">· {{item.title}}</span>
                 <span class="home-news-date">[{{item.created_at|getENDate}}]</span>
               </router-link>
             </li>
@@ -62,6 +62,23 @@
               </router-link>
             </li>
           </ul>
+        </Card>
+      </div>
+      <div class="home-left-panel">
+        <Card style="width:700px;height:166px;" class="border-top">
+          <p slot="title" class="home-card-title">台站风光</p>
+          <p slot="extra">
+            <router-link :to="{name:'scene'}">
+              <Button type="text">更多>></Button>
+            </router-link>
+          </p>
+          <Row type="flex" justify="start" class="code-row-bg home-scene">
+            <Col span="6" v-for="item in sceneList">
+              <router-link :to="{name:'sceneList',params:{data_id:item.data_id}}">
+                <img src="http://cms.cern.ac.cn/upload/151228/1512281620280540.gif" alt="sdf">
+              </router-link>
+            </Col>
+           </Row>
         </Card>
       </div>
     </div>
@@ -98,6 +115,16 @@
           </li>
         </ul>
       </Card>
+      <Card style="width:280px;" class="border-top">
+        <p slot="title" class="home-card-title">友情链接</p>
+        <ul class="home-news-item">
+          <li v-for="item in friend_url">
+            <a :href="item.url" target="_blank" >
+             <span class="home-news-title" style="width:260px">· {{item.title}}</span>
+            </a>
+          </li>
+        </ul>
+      </Card>
     </div>
   </div>
 </template>
@@ -111,8 +138,14 @@ export default {
       achvPaper: [], //科研论文
       achvpatents: [], //科研专著
       achvProjects: [], //科研项目
-      achvTypeOver: 1 //鼠标滑过的科学研究类型
+      achvTypeOver: 1, //鼠标滑过的科学研究类型
+      sceneList: [] //台账风光
     };
+  },
+  computed: {
+    friend_url() {
+      return CONFIG.FRIEND_URL;
+    }
   },
   methods: {
     async getNews(type, limit) {
@@ -173,6 +206,20 @@ export default {
         return [];
       }
       this.achvProjects = result.data.rows;
+    },
+    async getScene() {
+      let query = {
+        offset: 0,
+        limit: 4,
+        order: 0,
+        order_by: "data_id"
+      };
+      // let response = await this.apis.scene.list(query);
+      // let result = response.data;
+      // if (result.code === 0) {
+      //   return [];
+      // }
+      // this.sceneList = result.data.rows;
     }
   },
   async mounted() {
@@ -182,6 +229,7 @@ export default {
     await this.getAchvPaper(9);
     await this.getAchvpatent(9);
     await this.getAchvProject(9);
+    await this.getScene();
   }
 };
 </script>
@@ -271,6 +319,13 @@ export default {
           }
         }
       }
+    }
+  }
+  .home-scene {
+    img {
+      height: auto;
+      width: 100%;
+      max-width: 100%;
     }
   }
 }
