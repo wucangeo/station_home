@@ -74,8 +74,9 @@
           </p>
           <Row type="flex" justify="start" class="code-row-bg home-scene">
             <Col span="6" v-for="item in sceneList">
-              <router-link :to="{name:'sceneList',params:{data_id:item.data_id}}">
+              <router-link :to="{name:'imageSceneInfo',params:{data_id:item.data_id}}">
                 <img src="http://cms.cern.ac.cn/upload/151228/1512281620280540.gif" alt="sdf">
+                <!-- <img :src="item.path" alt="sdf"> -->
               </router-link>
             </Col>
            </Row>
@@ -209,17 +210,20 @@ export default {
     },
     async getScene() {
       let query = {
+        keys: {
+          type: 2
+        },
         offset: 0,
         limit: 4,
         order: 0,
         order_by: "data_id"
       };
-      // let response = await this.apis.scene.list(query);
-      // let result = response.data;
-      // if (result.code === 0) {
-      //   return [];
-      // }
-      // this.sceneList = result.data.rows;
+      let response = await this.apis.image.list(query);
+      let result = response.data;
+      if (result.code === 0) {
+        return [];
+      }
+      this.sceneList = result.data.rows;
     }
   },
   async mounted() {
@@ -323,6 +327,7 @@ export default {
   }
   .home-scene {
     img {
+      padding: 0 5px;
       height: auto;
       width: 100%;
       max-width: 100%;
