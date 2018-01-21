@@ -75,8 +75,8 @@
           <Row type="flex" justify="start" class="code-row-bg home-scene">
             <Col span="6" v-for="item in sceneList">
               <router-link :to="{name:'imageSceneInfo',params:{data_id:item.data_id}}">
-                <img src="http://cms.cern.ac.cn/upload/151228/1512281620280540.gif" alt="sdf">
-                <!-- <img :src="item.path" alt="sdf"> -->
+                <!-- <img src="http://cms.cern.ac.cn/upload/151228/1512281620280540.gif" alt="sdf"> -->
+                <img :src="item.path|getAbsolutePath" alt="item.name">
               </router-link>
             </Col>
            </Row>
@@ -326,6 +326,8 @@ export default {
     }
   }
   .home-scene {
+    height: 113px;
+    overflow-y: hidden;
     img {
       padding: 0 5px;
       height: auto;
