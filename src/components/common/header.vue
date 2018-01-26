@@ -47,8 +47,12 @@ export default {
               title: "台站简介"
             },
             {
-              name: "StationHistory",
+              name: "stationHistory",
               title: "历史沿革"
+            },
+            {
+              name: "stationRegulation",
+              title: "规章制度"
             }
           ]
         },
